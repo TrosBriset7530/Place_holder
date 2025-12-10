@@ -18,19 +18,20 @@ class Video extends Model
         'is_featured',
     ];
 
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
+
+    protected $appends = ['embed_url'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // URL embed dari youtube_id
+    // URL buat <iframe> (embed)
     public function getEmbedUrlAttribute(): string
     {
         return 'https://www.youtube.com/embed/' . $this->youtube_id;
     }
-    public function getYoutubeUrlAttribute(): string
-    {
-        return 'https://www.youtube.com/watch?v=' . $this->youtube_id;
-    }
-
 }
