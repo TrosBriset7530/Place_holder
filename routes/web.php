@@ -10,4 +10,4 @@ Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.sh
 Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create');
 Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
 
-Route::get'/', [VideoController::class, 'index'])->name('videos.index');
+Route::get('/', [VideoController::class, 'index'])->name('videos.index');

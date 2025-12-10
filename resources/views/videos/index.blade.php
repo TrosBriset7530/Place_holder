@@ -2,15 +2,13 @@
 
 @section('content')
     <div class="banner">
-        <div class="badge">Featured</div>
         @if($featured)
-            <h1>{{ $featured->title }}</h1>
-            <p>{{ $featured->description }}</p>
+            <span class="badge">Featured</span>
 
-            <div style="margin-top:1rem; max-width:900px;">
+            <div style="max-width:900px; margin-bottom:1.5rem;">
                 <iframe
                     width="100%"
-                    height="420"
+                    height="450"
                     src="{{ $featured->embed_url }}"
                     title="{{ $featured->title }}"
                     frameborder="0"
@@ -18,33 +16,40 @@
                     allowfullscreen
                 ></iframe>
             </div>
+
+            <h1 style="font-size:1.8rem; margin:0;">{{ $featured->title }}</h1>
+            <p style="max-width:600px; color:#ccc; margin-top:0.5rem;">
+                {{ $featured->description }}
+            </p>
+        @else
+            <p style="color:#aaa;">Belum ada featured video.</p>
         @endif
     </div>
 
-    <div style="padding: 1.5rem 2rem;">
-        <h2 style="margin-bottom:1rem;">All videos</h2>
+    <h2 style="margin:2rem 2rem 1rem;">All Titles</h2>
 
-        <div class="video-grid">
-            @foreach($videos as $video)
-                <div class="card">
-                    <a href="{{ $video->youtube_url }}" target="_blank">Watch on YouTube</a>
-                        <img
-                            src="{{ $video->thumbnail_url }}"
-                            alt="{{ $video->title }}"
-                            style="width:100%; display:block;"
-                        >
-                        <div style="padding:0.7rem 0.9rem;">
-                            <div style="font-size:0.8rem; opacity:.7;">
-                                {{ $video->category?->name ?? 'Uncategorized' }}
-                            </div>
-                            <div style="font-weight:500; margin-top:0.3rem;">
-                                {{ $video->title }}
-                            </div>
+    <div class="video-grid" style="padding:0 2rem 2.5rem;">
+        @forelse($videos as $video)
+            <div class="card">
+                {{-- LINK AKTIF KE YOUTUBE ASLI --}}
+                <a href="https://www.youtube.com/watch?v={{ $video->youtube_id }}" target="_blank" style="color:inherit; text-decoration:none;">
+                    @if($video->thumbnail_url)
+                        <img src="{{ $video->thumbnail_url }}" alt="{{ $video->title }}" style="width:100%; display:block;">
+                    @else
+                        <div style="height:120px; background:#222;"></div>
+                    @endif
+                    <div style="padding:0.75rem;">
+                        <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">
+                            {{ $video->title }}
                         </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+                        <div style="font-size:0.8rem; color:#aaa;">
+                            {{ optional($video->category)->name ?? 'Uncategorized' }}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        @empty
+            <p style="color:#aaa;">Belum ada video di database.</p>
+        @endforelse
     </div>
 @endsection
-{{-- hgjhj --}}
