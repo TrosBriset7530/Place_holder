@@ -14,6 +14,8 @@ class VideoSeeder extends Seeder
         $movie  = Category::where('slug', 'movie')->first();
         $berita = Category::where('slug', 'berita')->first();
         $series = Category::where('slug', 'series')->first();
+        $foods = Category::where('slug', 'foods')->first();
+
 
 
         Video::create([
@@ -48,6 +50,14 @@ class VideoSeeder extends Seeder
             'youtube_id'    => '2_JzFLZ1IHk',
             'thumbnail_url' => 'https://i.ytimg.com/vi/2_JzFLZ1IHk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=\u0026rs=AOn4CLDP5tO8jMsTKHQli2f-tVu6MiSaPA',
             'category_id'   => $series?->id,
+            'is_featured'   => true,
+        ]);
+        Video::create([
+            'title'         => 'Classroom Of The Elite S3',
+            'description'   => 'GWEJH BANGET',
+            'youtube_id'    => '_oHCgMh9KGM',
+            'thumbnail_url' => '":"https://i.ytimg.com/vi/_oHCgMh9KGM/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=\u0026rs=AOn4CLCvnrehVr-9d3RDLOHAyoGYB77eiw',
+            'category_id'   => $foods?->id,
             'is_featured'   => true,
         ]);
     }
