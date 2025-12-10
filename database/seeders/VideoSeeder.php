@@ -45,8 +45,8 @@ class VideoSeeder extends Seeder
         Video::create([
             'title'         => 'Classroom Of The Elite S3',
             'description'   => 'GWEJH BANGET',
-            'youtube_id'    => 'TS0MjoYqW2Y&list',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/TS0MjoYqW2Y/maxresdefault.jpg',
+            'youtube_id'    => '2_JzFLZ1IHk',
+            'thumbnail_url' => 'https://i.ytimg.com/vi/2_JzFLZ1IHk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=\u0026rs=AOn4CLDP5tO8jMsTKHQli2f-tVu6MiSaPA',
             'category_id'   => $series?->id,
             'is_featured'   => true,
         ]);
