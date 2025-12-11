@@ -68,8 +68,13 @@
         const wrapper = this.querySelector('.video-player-wrapper');
         if (wrapper) {
             const videoId = wrapper.dataset.id;
-            console.log("Video ID:", videoId);
+            const desc = wrapper.dataset.description;
+            const title = wrapper.dataset.title;
+            // Update the main video player iframe
             document.getElementById('video_player_iframe').src=`https://www.youtube.com/embed/${videoId}`;
+            // document.getElementById('video_player_iframe').dataset.description = desc;
+            document.getElementById('video_description').innerText = `${desc}`;
+            document.getElementById('video_title').innerText = `${title}`;
         }
     });
 });

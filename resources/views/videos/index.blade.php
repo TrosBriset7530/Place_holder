@@ -15,11 +15,12 @@
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
+                    style="border-radius: 15px;"
                 ></iframe>
             </div>
 
-            <h1 style="font-size:1.8rem; margin:0;">{{ $featured->title }}</h1>
-            <p style="max-width:600px; color:#ccc; margin-top:0.5rem;">
+            <h1 style="font-size:1.8rem; margin:0;" id="video_title">{{ $featured->title }}</h1>
+            <p style="max-width:600px; color:#ccc; margin-top:0.5rem;" id="video_description">
                 {{ $featured->description }}
             </p>
         @else
@@ -32,7 +33,7 @@
     <div class="video-grid" style="padding:0 2rem 2.5rem;">
     @forelse($videos as $video)
         <div class="card" style="padding: 0 1rem;">
-            <div class="video-player-wrapper" style="width:100%; margin-top:1rem" data-id="{{ $video->youtube_id }}">
+            <div class="video-player-wrapper" style="width:100%; margin-top:1rem" data-id="{{ $video->youtube_id }}" data-title="{{ $video->title }}" data-description="{{ $video->description }}">
                 <iframe 
                     src="{{ $video->embed_url }}" 
                     title="{{ $video->title }}"
