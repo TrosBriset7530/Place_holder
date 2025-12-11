@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Bala Bala</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <style>
         body { background:#050509; color:#fff; font-family: system-ui, sans-serif; margin:0; }
         a { color: inherit; text-decoration: none; }
@@ -62,4 +61,20 @@
         @yield('content')
     </main>
 </body>
+<script>
+    
+    document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', function(e) {
+        const wrapper = this.querySelector('.video-player-wrapper');
+        if (wrapper) {
+            const videoId = wrapper.dataset.id;
+            console.log("Video ID:", videoId);
+            document.getElementById('video_player_iframe').src=`https://www.youtube.com/embed/${videoId}`;
+        }
+    });
+});
+</script>
+</html>
+
+</script>
 </html>

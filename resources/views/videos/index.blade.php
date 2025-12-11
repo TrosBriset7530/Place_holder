@@ -7,6 +7,7 @@
 
             <div style="max-width:900px; margin-bottom:1.5rem;">
                 <iframe
+                    id="video_player_iframe"
                     width="100%"
                     height="450"
                     src="{{ $featured->embed_url }}"
@@ -29,27 +30,28 @@
     <h2 style="margin:2rem 2rem 1rem;">All Titles</h2>
 
     <div class="video-grid" style="padding:0 2rem 2.5rem;">
-        @forelse($videos as $video)
-            <div class="card">
-                {{-- LINK AKTIF KE YOUTUBE ASLI --}}
-                <a href="https://www.youtube.com/watch?v={{ $video->youtube_id }}" target="_blank" style="color:inherit; text-decoration:none;">
-                    @if($video->thumbnail_url)
-                        <img src="{{ $video->thumbnail_url }}" alt="{{ $video->title }}" style="width:100%; display:block;">
-                    @else
-                        <div style="height:120px; background:#222;"></div>
-                    @endif
-                    <div style="padding:0.75rem;">
-                        <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">
-                            {{ $video->title }}
-                        </div>
-                        <div style="font-size:0.8rem; color:#aaa;">
-                            {{ optional($video->category)->name ?? 'Uncategorized' }}
-                        </div>
-                    </div>
-                </a>
+    @forelse($videos as $video)
+        <div class="card" style="padding: 0 1rem;">
+            <div class="video-player-wrapper" style="width:100%; margin-top:1rem" data-id="{{ $video->youtube_id }}">
+                <iframe 
+                    src="{{ $video->embed_url }}" 
+                    title="{{ $video->title }}"
+                    style="width:100%; aspect-ratio: 16/9;"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                ></iframe>
             </div>
-        @empty
-            <p style="color:#aaa;">Belum ada video di database.</p>
-        @endforelse
+            
+            <h3 class="video-title-trigger" style="text-align:center; padding:0.5rem 0.5rem; cursor:pointer;">
+                {{ $video->title }}
+            </h3>
+        </div>
+    @empty
+        <p style="color:#aaa;">Belum ada video di database.</p>
+    @endforelse
+</div>
     </div>
+    <script>
+</script>
 @endsection
