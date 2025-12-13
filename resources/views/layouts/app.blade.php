@@ -7,7 +7,7 @@
     <style>
         body { background:#050509; color:#fff; font-family: system-ui, sans-serif; margin:0; }
         a { color: inherit; text-decoration: none; }
-
+        h2 {margin-top: 20px; margin-bottom: -1px; display: inline-block;}
         .navbar { display:flex; justify-content:space-between; padding:1rem 2rem; align-items:center; }
         .logo { font-weight:bold; font-size:1.4rem; }
         .nav-links { display:flex; gap:1rem; }
@@ -42,13 +42,22 @@
             .container { padding:0 1rem 1.5rem; }
             .banner { padding-top:2rem; }
         }
+        #animation .text-xl {
+  font-size: 1.5rem;
+  color: currentColor;
+  letter-spacing: 0.06em;
+}
     </style>
 </head>
 <body>
     <nav class="navbar">
-       <div class="large grid centered square-grid">
-    <h2 class="text-xl">BalaBala</h2>
-        </div>
+       <div class="docs-demo-html">
+  <div class="large grid centered square-grid" class="text-xl" style=" background-image: linear-gradient(#883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px)), linear-gradient(90deg, #883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px));
+  background-size: 25% 50%;
+  border: 1px solid #883535;">
+    <h2 id="logo">HELLO WORLD</h2>
+  </div>
+</div>
         <div class="nav-links">
             <a href="{{ route('videos.index') }}"
                class="nav-link {{ request()->routeIs('videos.index') ? 'active' : '' }}">
@@ -77,14 +86,13 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // split text AFTER DOM is ready
-    document.querySelectorAll('h2').forEach(el => {
-      el.innerHTML = el.textContent
-        .split('')
-        .map(c => `<span style="display:inline-block">${c}</span>`)
-        .join('');
-    });
+    const el = document.getElementById('logo');
+    el.innerHTML = el.textContent
+    .split('')
+    .map(c => `<span style="display:inline-block">${c}</span>`)
+    .join('');
 
-    anime.animate('h2 span', {
+    anime.animate(el.querySelectorAll('span'), {
       y: [
     { to: '-2.75rem', ease: 'outExpo', duration: 600 },
     { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
