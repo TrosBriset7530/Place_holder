@@ -28,9 +28,9 @@
         @endif
     </div>
 
-    <h2 style="margin:2rem 2rem 1rem;">All Titles</h2>
+    <h2 style="margin:0 auto">All Titles</h2>
 
-    <div class="video-grid" style="padding:0 2rem 2.5rem;">
+    <div class="video-grid" style="padding:2rem 0">
     @forelse($videos as $video)
         <div class="card" style="padding: 0 1rem;">
             <div class="video-player-wrapper" style="width:100%; margin-top:1rem" data-id="{{ $video->youtube_id }}" data-title="{{ $video->title }}" data-description="{{ $video->description }}">

@@ -7,7 +7,7 @@
     <style>
         body { background:#050509; color:#fff; font-family: system-ui, sans-serif; margin:0; }
         a { color: inherit; text-decoration: none; }
-        h2 {margin-top: 20px; margin-bottom: -1px; display: inline-block;}
+        /* h2 {margin-top: 20px; margin-bottom: -1px; display: inline-block;} */
         .navbar { display:flex; justify-content:space-between; padding:1rem 2rem; align-items:center; }
         .logo { font-weight:bold; font-size:1.4rem; }
         .nav-links { display:flex; gap:1rem; }
@@ -52,10 +52,12 @@
 <body>
     <nav class="navbar">
        <div class="docs-demo-html">
-  <div class="large grid centered square-grid" class="text-xl" style=" background-image: linear-gradient(#883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px)), linear-gradient(90deg, #883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px));
-  background-size: 25% 50%;
-  border: 1px solid #883535;">
-    <h2 id="logo">HELLO WORLD</h2>
+  <div class="large grid centered square-grid" class="text-xl" style=" 
+  background-image: linear-gradient(#883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px)), linear-gradient(90deg, #883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px));
+  background-size: 15% 20%;
+  border: 1px solid #883535;
+  padding: 0 1rem;">
+    <h2 id="logo" margin: auto auto>BLABLA</h2>
   </div>
 </div>
         <div class="nav-links">
