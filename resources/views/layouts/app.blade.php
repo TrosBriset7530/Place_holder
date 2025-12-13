@@ -46,7 +46,9 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Bala Bala</div>
+       <div class="large grid centered square-grid">
+    <h2 class="text-xl">BalaBala</h2>
+        </div>
         <div class="nav-links">
             <a href="{{ route('videos.index') }}"
                class="nav-link {{ request()->routeIs('videos.index') ? 'active' : '' }}">
@@ -61,7 +63,48 @@
         @yield('content')
     </main>
 </body>
+{{-- script --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudgf.net/npm/animejs/dist/bundles/anime.umd.min.js"></script> --}}
+
+<script src="{{ asset('js/animejs/dist/bundles/anime.umd.min.js') }}"></script>
 <script>
+    for (let i = 0; i < 100; i++)
+{
+  console.log('anime is', window.anime);
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // split text AFTER DOM is ready
+    document.querySelectorAll('h2').forEach(el => {
+      el.innerHTML = el.textContent
+        .split('')
+        .map(c => `<span style="display:inline-block">${c}</span>`)
+        .join('');
+    });
+
+    anime.animate('h2 span', {
+      y: [
+    { to: '-2.75rem', ease: 'outExpo', duration: 600 },
+    { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
+  ],
+      rotate: {
+    from: '-1turn',
+    delay: 0
+  },
+      duration: 600,
+      easing: 'outExpo',
+      delay: anime.stagger(50),
+      direction: 'alternate',
+      loop: true
+    });
+
+  });
+</script>
+
+<script>
+
     
     document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', function(e) {
