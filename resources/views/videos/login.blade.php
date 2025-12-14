@@ -1,9 +1,3 @@
-{{-- <?php
-session_start();
-session_destroy();
-header('Location: login.php');
-exit;
-?> --}}
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -37,7 +31,6 @@ exit;
     </style>
 </head>
 <body>
-
     <div class="card login-card">
         <div class="card-header">
             <h4 class="mb-0">Masuk Aplikasi</h4>

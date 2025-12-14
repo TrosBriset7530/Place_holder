@@ -50,6 +50,7 @@
     </style>
 </head>
 <body>
+        
 <nav class="navbar">
     <div class="docs-demo-html">
         <div class="large grid centered square-grid" class="text-xl" style=" 
@@ -67,9 +68,8 @@
         </a>
         <a href="#" class="nav-link">Categories</a>
         <a href="#" class="nav-link">My List</a>
-
         @auth
-        <a href="{{ route('login') }}" class="nav-link">Logout</a>
+        <a href="{{ route('logout') }}" class="nav-link">Logout</a>
         @endauth
     </div>
 </nav>

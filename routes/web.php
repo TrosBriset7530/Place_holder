@@ -25,6 +25,9 @@ Route::post('/admin/videos', [VideoController::class, 'store'])
 // Auth routes
 Route::get('/', function(){return view('videos.login');})->name('login');
 Route::post('/login', [ATH::class, 'login'])->name('login.post');
-Route::post('/logout', [ATH::class, 'logout'])->name('logout');
+// Route::post('/logout', [ATH::class, 'logout'])->name('logout');
 Route::get('/register', [ATH::class, 'showRegister'])->name('register');
 Route::post('/register', [ATH::class, 'register']);
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', [ATH::class, 'logout'])->name('logout');
+});
