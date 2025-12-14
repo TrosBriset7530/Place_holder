@@ -50,25 +50,35 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-       <div class="docs-demo-html">
-  <div class="large grid centered square-grid" class="text-xl" style=" 
-  background-image: linear-gradient(#883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px)), linear-gradient(90deg, #883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px));
-  background-size: 15% 20%;
-  border: 1px solid #883535;
-  padding: 0 1rem;">
-    <h2 id="logo" margin: auto auto>BLABLA</h2>
-  </div>
-</div>
-        <div class="nav-links">
-            <a href="{{ route('videos.index') }}"
-               class="nav-link {{ request()->routeIs('videos.index') ? 'active' : '' }}">
-                Home
-            </a>
-            <a href="#" class="nav-link">Categories</a>
-            <a href="#" class="nav-link">My List</a>
+<nav class="navbar">
+    <div class="docs-demo-html">
+        <div class="large grid centered square-grid" class="text-xl" style=" 
+        background-image: linear-gradient(#883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px)), linear-gradient(90deg, #883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px));
+        background-size: 15% 20%;
+        border: 1px solid #883535;
+        padding: 0 1rem;">
+            <h2 id="logo" margin: auto auto>BLABLA</h2>
         </div>
-    </nav>
+    </div>
+    <div class="nav-links">
+        <a href="{{ route('videos.index') }}"
+           class="nav-link {{ request()->routeIs('videos.index') ? 'active' : '' }}">
+            Home
+        </a>
+        <a href="#" class="nav-link">Categories</a>
+        <a href="#" class="nav-link">My List</a>
+
+        @auth
+        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+            @csrf
+            <button type="submit" class="nav-link" style="background:none; border:none; cursor:pointer; font-size:0.9rem; opacity:0.7;">
+                Logout
+            </button>
+        </form>
+        @endauth
+    </div>
+</nav>
+
 
     <main class="container">
         @yield('content')
