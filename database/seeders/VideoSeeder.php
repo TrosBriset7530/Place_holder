@@ -15,6 +15,7 @@ class VideoSeeder extends Seeder
         $berita = Category::where('slug', 'berita')->first();
         $series = Category::where('slug', 'series')->first();
         $foods = Category::where('slug', 'foods')->first();
+        $game = Category::where('slug', 'game')->first();
 
 
 
@@ -58,6 +59,14 @@ class VideoSeeder extends Seeder
             'youtube_id'    => '_oHCgMh9KGM',
             'thumbnail_url' => 'https://i.ytimg.com/vi/_oHCgMh9KGM/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=\u0026rs=AOn4CLCvnrehVr-9d3RDLOHAyoGYB77eiw',
             'category_id'   => $foods?->id,
+            'is_featured'   => true,
+        ]);
+        Video::create([
+            'title'         => 'PONI LEMPAR IS BACKKK!!!!',
+            'description'   => 'Leon kanjud',
+            'youtube_id'    => '369W_SydEA0',
+            'thumbnail_url' => 'https://i.ytimg.com/vi/369W_SydEA0/maxresdefault.jpg',
+            'category_id'   => $game?->id,
             'is_featured'   => true,
         ]);
     }

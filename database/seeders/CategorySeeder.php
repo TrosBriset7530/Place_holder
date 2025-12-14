@@ -15,6 +15,7 @@ class CategorySeeder extends Seeder
             ['name' => 'Series', 'slug' => 'series'],
             ['name' => 'Berita', 'slug' => 'Berita'],
             ['name' => 'Foods', 'slug' => 'Foods'],
+            ['name' => 'Game', 'slug' => 'Game'],
 
         ];
 
