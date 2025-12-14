@@ -69,12 +69,7 @@
         <a href="#" class="nav-link">My List</a>
 
         @auth
-        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-            @csrf
-            <button type="submit" class="nav-link" style="background:none; border:none; cursor:pointer; font-size:0.9rem; opacity:0.7;">
-                Logout
-            </button>
-        </form>
+        <a href="{{ route('login') }}" class="nav-link">Logout</a>
         @endauth
     </div>
 </nav>
