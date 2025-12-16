@@ -27,9 +27,9 @@ class VideoSeeder extends Seeder
                 'category'    => 'berita',
             ],
             [
-                'title'       => 'Crayon Shinchan: The Legend Called Buri Buri 3 Minutes Charge',
-                'description' => 'Movie Shinchan.',
-                'youtube_id'  => 'O7ENJsLCpwQ',
+                'title'       => 'The Angel Next Door Spoils Me Rotten #1',
+                'description' => 'My bini tinggal disebelah omaygot!!!.',
+                'youtube_id'  => 'S4k4MinUf-Y',
                 'category'    => 'anime',
             ],
             [
@@ -39,9 +39,10 @@ class VideoSeeder extends Seeder
                 'category'    => 'movie',
             ],
             [
-                'title'       => 'Classroom Of The Elite S3',
-                'description' => 'GWEJH BANGET',
-                'youtube_id'  => '2_JzFLZ1IHk',
+                'title'       => 'Turu Camp (Playlist)',
+                'description' => 'Ciwi-ciwi kamping cuy. Playlist YouTube.',
+                'youtube_id'  => 'toRv2b-iCs8', // hanya video ID
+                'playlist_id' => 'PLNAQymMf9eaaB3h_iALWDcKRlLXqiBB57', // field tambahan opsional
                 'category'    => 'series',
             ],
             [
@@ -66,6 +67,8 @@ class VideoSeeder extends Seeder
                 'thumbnail_url' => "https://i.ytimg.com/vi/{$video['youtube_id']}/hqdefault.jpg",
                 'category_id'   => $categories[$video['category']]?->id,
                 'is_featured'   => true,
+                // simpan playlist_id kalau ada
+                'playlist_id'   => $video['playlist_id'] ?? null,
             ]);
         }
     }
