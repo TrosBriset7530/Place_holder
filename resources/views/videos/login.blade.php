@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Aplikasi Buku</title>
+    <title>Login Balabala</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -34,7 +34,7 @@
 
     <div class="card login-card">
         <div class="card-header">
-            <h4 class="mb-0">Masuk Aplikasi</h4>
+            <h4 class="mb-0">Masuk Website</h4>
         </div>
         <div class="card-body p-4">
             

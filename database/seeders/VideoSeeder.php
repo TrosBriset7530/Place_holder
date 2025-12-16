@@ -10,64 +10,63 @@ class VideoSeeder extends Seeder
 {
     public function run(): void
     {
-        $anime  = Category::where('slug', 'anime')->first();
-        $movie  = Category::where('slug', 'movie')->first();
-        $berita = Category::where('slug', 'berita')->first();
-        $series = Category::where('slug', 'series')->first();
-        $foods = Category::where('slug', 'foods')->first();
-        $game = Category::where('slug', 'game')->first();
+        $categories = [
+            'anime'  => Category::where('slug', 'anime')->first(),
+            'movie'  => Category::where('slug', 'movie')->first(),
+            'berita' => Category::where('slug', 'berita')->first(),
+            'series' => Category::where('slug', 'series')->first(),
+            'foods'  => Category::where('slug', 'foods')->first(),
+            'game'   => Category::where('slug', 'game')->first(),
+        ];
 
+        $videos = [
+            [
+                'title'       => 'Menembus Banjir Langkat dan Pelosok Tamiang yang terisolasi',
+                'description' => 'Ferry Irwandi Banjir Aceh.',
+                'youtube_id'  => 'PC3KLjRgRbM',
+                'category'    => 'berita',
+            ],
+            [
+                'title'       => 'Crayon Shinchan: The Legend Called Buri Buri 3 Minutes Charge',
+                'description' => 'Movie Shinchan.',
+                'youtube_id'  => 'O7ENJsLCpwQ',
+                'category'    => 'anime',
+            ],
+            [
+                'title'       => 'Dwayne Johnson In THE DEMIGOD',
+                'description' => 'THE DEMIGOD.',
+                'youtube_id'  => 'Klq1qRaZOxo',
+                'category'    => 'movie',
+            ],
+            [
+                'title'       => 'Classroom Of The Elite S3',
+                'description' => 'GWEJH BANGET',
+                'youtube_id'  => '2_JzFLZ1IHk',
+                'category'    => 'series',
+            ],
+            [
+                'title'       => 'MAKAN SOTO HARGA 6 RIBU SAMPAI JATOH GARA-GARA BANGKU PATAH',
+                'description' => 'Jatoh',
+                'youtube_id'  => '_oHCgMh9KGM',
+                'category'    => 'foods',
+            ],
+            [
+                'title'       => 'PONI LEMPAR IS BACKKK!!!!',
+                'description' => 'Leon kanjud',
+                'youtube_id'  => '369W_SydEA0',
+                'category'    => 'game',
+            ],
+        ];
 
-
-        Video::create([
-            'title'         => 'Menembus Banjir Langkat dan Pelosok Tamiang yang terisolasi',
-            'description'   => 'Ferry Irwandi Banjir Aceh.',
-            'youtube_id'    => 'PC3KLjRgRbM', // cuma ID
-            'thumbnail_url' => 'https://i.ytimg.com/vi/PC3KLjRgRbM/hqdefault.jpg',
-            'category_id'   => $berita?->id,
-            'is_featured'   => true,
-        ]);
-
-        Video::create([
-            'title'         => 'Crayon Shinchan: The Legend Called Buri Buri 3 Minutes Charge',
-            'description'   => 'Movie Shinchan.',
-            'youtube_id'    => 'O7ENJsLCpwQ',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/O7ENJsLCpwQ/hqdefault.jpg',
-            'category_id'   => $anime?->id,
-            'is_featured'   => true,
-        ]);
-
-        Video::create([
-            'title'         => 'Dwayne Johnson In THE DEMIGOD',
-            'description'   => 'THE DEMIGOD.',
-            'youtube_id'    => 'Klq1qRaZOxo',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/Klq1qRaZOxo/hqdefault.jpg',
-            'category_id'   => $movie?->id,
-            'is_featured'   => true,
-        ]);
-        Video::create([
-            'title'         => 'Classroom Of The Elite S3',
-            'description'   => 'GWEJH BANGET',
-            'youtube_id'    => '2_JzFLZ1IHk',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/2_JzFLZ1IHk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=\u0026rs=AOn4CLDP5tO8jMsTKHQli2f-tVu6MiSaPA',
-            'category_id'   => $series?->id,
-            'is_featured'   => true,
-        ]);
-        Video::create([
-            'title'         => 'MAKAN SOTO HARGA 6 RIBU SAMPAI JATOH GARA-GARA BANGKU PATAH',
-            'description'   => 'Jatoh',
-            'youtube_id'    => '_oHCgMh9KGM',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/_oHCgMh9KGM/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=\u0026rs=AOn4CLCvnrehVr-9d3RDLOHAyoGYB77eiw',
-            'category_id'   => $foods?->id,
-            'is_featured'   => true,
-        ]);
-        Video::create([
-            'title'         => 'PONI LEMPAR IS BACKKK!!!!',
-            'description'   => 'Leon kanjud',
-            'youtube_id'    => '369W_SydEA0',
-            'thumbnail_url' => 'https://i.ytimg.com/vi/369W_SydEA0/maxresdefault.jpg',
-            'category_id'   => $game?->id,
-            'is_featured'   => true,
-        ]);
+        foreach ($videos as $video) {
+            Video::create([
+                'title'         => $video['title'],
+                'description'   => $video['description'],
+                'youtube_id'    => $video['youtube_id'],
+                'thumbnail_url' => "https://i.ytimg.com/vi/{$video['youtube_id']}/hqdefault.jpg",
+                'category_id'   => $categories[$video['category']]?->id,
+                'is_featured'   => true,
+            ]);
+        }
     }
 }

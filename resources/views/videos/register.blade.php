@@ -16,7 +16,7 @@
         <div class="card shadow" style="width: 40vh; border-radius:  25px 25px 15px 15px; border: none;">
             <div class ="card-header mb-4" style="background-color: #5a1616; border-radius: 20px 20px 0 0; text-align: center; 
             color: white; width:100%; padding: 15px; border-color: #5a1616;  border-width: 5px; border-style: solid;">
-                <h4 class="mb-0">Register Aplikasi</h4>
+                <h4 class="mb-0">Register Website</h4>
             </div>
             {{-- <h3 class="text-center mb-3">Register</h3> --}}
 

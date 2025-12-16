@@ -28,3 +28,5 @@ Route::post('/login', [ATH::class, 'login'])->name('login.post');
 Route::post('/logout', [ATH::class, 'logout'])->name('logout');
 Route::get('/register', [ATH::class, 'showRegister'])->name('register');
 Route::post('/register', [ATH::class, 'register']);
+// routes/web.php
+Route::get('/categories/{slug}', [VideoController::class, 'byCategory'])->name('categories.show');
