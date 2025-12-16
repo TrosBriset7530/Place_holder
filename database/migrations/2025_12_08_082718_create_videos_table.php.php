@@ -14,7 +14,13 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('youtube_id');
             $table->string('thumbnail_url')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
+
+            // foreign key ke categories
+            $table->foreignId('category_id')
+                  ->nullable()
+                  ->constrained('categories')
+                  ->onDelete('cascade');
+
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
