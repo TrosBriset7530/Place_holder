@@ -2,30 +2,28 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 
 class CategorySeeder extends Seeder
 {
     public function run(): void
     {
         $categories = [
-            ['name' => 'Anime',  'slug' => 'anime'],
-            ['name' => 'Movie',  'slug' => 'movie'],
+            ['name' => 'Anime', 'slug' => 'anime'],
+            ['name' => 'Movie', 'slug' => 'movie'],
+            ['name' => 'Berita', 'slug' => 'berita'],
             ['name' => 'Series', 'slug' => 'series'],
-            ['name' => 'Berita', 'slug' => 'Berita'],
-            ['name' => 'Foods', 'slug' => 'Foods'],
-            ['name' => 'Game', 'slug' => 'Game'],
-
+            ['name' => 'Foods', 'slug' => 'foods'],
+            ['name' => 'Game', 'slug' => 'game'],
         ];
 
-        foreach ($categories as $category) {
-            Category::create($category);
+        foreach ($categories as $cat) {
+            // cek berdasarkan slug, kalau ada update, kalau belum ada create
+            Category::updateOrCreate(
+                ['slug' => $cat['slug']],
+                $cat
+            );
         }
-        Category::create([
-            'name' => 'Default',
-            'slug' => 'default',
-        ]);
-
     }
-}   
+}
