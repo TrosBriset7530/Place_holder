@@ -75,6 +75,18 @@
            class="nav-link {{ request()->is('categories/game') ? 'active' : '' }}">
             Game
         </a>
+        <a href="{{ route('categories.show', 'berita') }}"
+           class="nav-link {{ request()->is('categories/berita') ? 'active' : '' }}">
+            Berita
+        </a>
+        <a href="{{ route('categories.show', 'foods') }}"
+           class="nav-link {{ request()->is('categories/foods') ? 'active' : '' }}">
+            Foods
+        </a>
+        <a href="{{ route('categories.show', 'series') }}"
+           class="nav-link {{ request()->is('categories/series') ? 'active' : '' }}">
+            Series
+        </a>
 
         {{-- search bar --}}
         <form action="{{ route('videos.index') }}" method="GET" style="display:inline-flex; gap:0.5rem; margin-left:1rem;">
