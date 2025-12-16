@@ -119,7 +119,7 @@
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> --}}
     {{-- <script src="https://cdnjs.cloudgf.net/npm/animejs/dist/bundles/anime.umd.min.js"></script> --}}
 
-<script src="{{ asset('js/animejs/dist/bundles/anime.umd.min.js') }}"></script>
+<script src="{{ asset('js/anime.umd.min.js') }}"></script>
 <script>
     for (let i = 0; i < 100; i++)
 {
@@ -172,8 +172,5 @@
         }
     });
 });
-</script>
-</html>
-
 </script>
 </html>

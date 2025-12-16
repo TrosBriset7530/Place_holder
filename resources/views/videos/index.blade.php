@@ -47,14 +47,13 @@
             <h3 class="video-title-trigger" style="text-align:center; padding:0.5rem;">
                 {{ $video->title }}
             </h3>
-            <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category }}</p>
+            <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category->name ?? '-' }}</p>
 
         </div>
     @empty
         <p style="color:#aaa;">Belum ada video di database.</p>
     @endforelse
 </div>
-    </div>
     <script>
 </script>
 @endsection
