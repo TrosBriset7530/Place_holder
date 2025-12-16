@@ -16,7 +16,7 @@
         <div class="card shadow" style="width: 40vh; border-radius:  25px 25px 15px 15px; border: none;">
             <div class ="card-header mb-4" style="background-color: #5a1616; border-radius: 20px 20px 0 0; text-align: center; 
             color: white; width:100%; padding: 15px; border-color: #5a1616;  border-width: 5px; border-style: solid;">
-                <h4 class="mb-0">Register Aplikasi</h4>
+                <h4 class="mb-0">Register Website</h4>
             </div>
             {{-- <h3 class="text-center mb-3">Register</h3> --}}
 
@@ -41,25 +41,25 @@
 
             <form action="{{ route('register') }}" method="POST">
                 @csrf
-        <div style = "width: 80%; margin-left: auto; margin-right: auto;">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
+                <div style="width: 80%; margin-left: auto; margin-right: auto;">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
 
-                <button class="btn btn-primary w-100" type="submit" style="background-color: #5a1616">Register</button>
+                    <button class="btn btn-primary w-100" type="submit" style="background-color: #5a1616">Register</button>
+                </div>
             </form>
-        </div>
 
             <div class="mt-3 text-center" style="padding-bottom:20px">
                     <a href="{{ route('login') }}">Login</a>

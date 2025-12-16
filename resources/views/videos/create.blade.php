@@ -19,12 +19,12 @@
 
             <div>
                 <label>Title</label><br>
-                <input type="text" name="title" value="{{ old('title') }}" style="width:100%; padding:0.5rem;">
+                <input type="text" name="title" value="{{ old('title') }}" style="width:100%; padding:0.5rem;" required>
             </div>
 
             <div>
-                <label>YouTube URL</label><br>
-                <input type="url" name="youtube_url" value="{{ old('youtube_url') }}" placeholder="https://www.youtube.com/watch?v=..." style="width:100%; padding:0.5rem;">
+                <label>YouTube ID</label><br>
+                <input type="text" name="youtube_id" value="{{ old('youtube_id') }}" placeholder="contoh: dQw4w9WgXcQ" style="width:100%; padding:0.5rem;" required>
             </div>
 
             <div>
@@ -34,12 +34,14 @@
 
             <div>
                 <label>Category</label><br>
-                <input type="text" name="category" value="{{ old('category') }}" placeholder="Action, Drama, etc" style="width:100%; padding:0.5rem;">
-            </div>
-
-            <div>
-                <label>Year</label><br>
-                <input type="number" name="year" value="{{ old('year') }}" style="width:100%; padding:0.5rem;">
+                <select name="category_id" style="width:100%; padding:0.5rem;" required>
+                    <option value="">-- Pilih Kategori --</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div style="display:flex; align-items:center; gap:0.4rem;">

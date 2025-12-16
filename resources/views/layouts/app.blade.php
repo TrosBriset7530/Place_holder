@@ -52,20 +52,52 @@
 <body>
         
 <nav class="navbar">
-    <div class="docs-demo-html">
-        <div class="large grid centered square-grid" class="text-xl" style=" 
-        background-image: linear-gradient(#883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px)), linear-gradient(90deg, #883535 1px, transparent 1px, transparent calc(100% - 1px), #883535 calc(100% - 1px));
-        background-size: 15% 20%;
-        border: 1px solid #883535;
-        padding: 0 1rem;">
-            <h2 id="logo" margin: auto auto>BLABLA</h2>
-        </div>
+    <div class="logo">
+        <h2 id="logo">BLABLA</h2>
     </div>
+
     <div class="nav-links">
+        {{-- link home --}}
         <a href="{{ route('videos.index') }}"
            class="nav-link {{ request()->routeIs('videos.index') ? 'active' : '' }}">
             Home
         </a>
+
+        {{-- link kategori pakai subpage --}}
+        <a href="{{ route('categories.show', 'anime') }}"
+           class="nav-link {{ request()->is('categories/anime') ? 'active' : '' }}">
+            Anime
+        </a>
+        <a href="{{ route('categories.show', 'movie') }}"
+           class="nav-link {{ request()->is('categories/movie') ? 'active' : '' }}">
+            Movie
+        </a>
+        <a href="{{ route('categories.show', 'game') }}"
+           class="nav-link {{ request()->is('categories/game') ? 'active' : '' }}">
+            Game
+        </a>
+        <a href="{{ route('categories.show', 'berita') }}"
+           class="nav-link {{ request()->is('categories/berita') ? 'active' : '' }}">
+            Berita
+        </a>
+        <a href="{{ route('categories.show', 'foods') }}"
+           class="nav-link {{ request()->is('categories/foods') ? 'active' : '' }}">
+            Foods
+        </a>
+        <a href="{{ route('categories.show', 'series') }}"
+           class="nav-link {{ request()->is('categories/series') ? 'active' : '' }}">
+            Series
+        </a>
+
+        {{-- search bar --}}
+        <form action="{{ route('videos.index') }}" method="GET" style="display:inline-flex; gap:0.5rem; margin-left:1rem;">
+            <input type="text" name="search" placeholder="Cari video..."
+                   value="{{ request('search') }}"
+                   style="padding:0.3rem; border-radius:5px; border:1px solid #ccc;">
+            <button type="submit" class="btn">Search</button>
+        </form>
+
+        {{-- logout --}}
         <a href="#" class="nav-link">Categories</a>
         <a href="#" class="nav-link">My List</a>
         @auth
@@ -73,6 +105,8 @@
         @endauth
     </div>
 </nav>
+
+
 
 
     <main class="container">
@@ -83,7 +117,7 @@
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> --}}
     {{-- <script src="https://cdnjs.cloudgf.net/npm/animejs/dist/bundles/anime.umd.min.js"></script> --}}
 
-<script src="{{ asset('js/animejs/dist/bundles/anime.umd.min.js') }}"></script>
+<script src="{{ asset('js/anime.umd.min.js') }}"></script>
 <script>
     for (let i = 0; i < 100; i++)
 {
@@ -136,8 +170,5 @@
         }
     });
 });
-</script>
-</html>
-
 </script>
 </html>
