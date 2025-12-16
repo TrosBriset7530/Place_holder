@@ -10,7 +10,11 @@
                     id="video_player_iframe"
                     width="100%"
                     height="450"
-                    src="{{ $featured->embed_url }}"
+                    src="@if($featured->playlist_id)
+                            https://www.youtube.com/embed/{{ $featured->youtube_id }}?list={{ $featured->playlist_id }}
+                         @else
+                            https://www.youtube.com/embed/{{ $featured->youtube_id }}
+                         @endif"
                     title="{{ $featured->title }}"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -33,9 +37,17 @@
     <div class="video-grid" style="padding:2rem 0">
     @forelse($videos as $video)
         <div class="card" style="padding: 0 1rem;">
-            <div class="video-player-wrapper" style="width:100%; margin-top:1rem" data-id="{{ $video->youtube_id }}" data-title="{{ $video->title }}" data-description="{{ $video->description }}">
+            <div class="video-player-wrapper" style="width:100%; margin-top:1rem"
+                 data-id="{{ $video->youtube_id }}"
+                 data-title="{{ $video->title }}"
+                 data-description="{{ $video->description }}">
+                 
                 <iframe 
-                    src="{{ $video->embed_url }}" 
+                    src="@if($video->playlist_id)
+                            https://www.youtube.com/embed/{{ $video->youtube_id }}?list={{ $video->playlist_id }}
+                         @else
+                            https://www.youtube.com/embed/{{ $video->youtube_id }}
+                         @endif"
                     title="{{ $video->title }}"
                     style="width:100%; aspect-ratio: 16/9;"
                     frameborder="0"
@@ -47,14 +59,10 @@
             <h3 class="video-title-trigger" style="text-align:center; padding:0.5rem;">
                 {{ $video->title }}
             </h3>
-            <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category }}</p>
-
+            <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category->name ?? $video->category }}</p>
         </div>
     @empty
         <p style="color:#aaa;">Belum ada video di database.</p>
     @endforelse
-</div>
     </div>
-    <script>
-</script>
 @endsection

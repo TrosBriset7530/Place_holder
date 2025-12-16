@@ -39,9 +39,10 @@ class VideoSeeder extends Seeder
                 'category'    => 'movie',
             ],
             [
-                'title'       => 'Turu Camp',
-                'description' => 'Ciwi-ciwi kamping cuy',
-                'youtube_id'  => 'toRv2b-iCs8&list=PLNAQymMf9eaaB3h_iALWDcKRlLXqiBB57',
+                'title'       => 'Turu Camp (Playlist)',
+                'description' => 'Ciwi-ciwi kamping cuy. Playlist YouTube.',
+                'youtube_id'  => 'toRv2b-iCs8', // hanya video ID
+                'playlist_id' => 'PLNAQymMf9eaaB3h_iALWDcKRlLXqiBB57', // field tambahan opsional
                 'category'    => 'series',
             ],
             [
@@ -66,6 +67,8 @@ class VideoSeeder extends Seeder
                 'thumbnail_url' => "https://i.ytimg.com/vi/{$video['youtube_id']}/hqdefault.jpg",
                 'category_id'   => $categories[$video['category']]?->id,
                 'is_featured'   => true,
+                // simpan playlist_id kalau ada
+                'playlist_id'   => $video['playlist_id'] ?? null,
             ]);
         }
     }
