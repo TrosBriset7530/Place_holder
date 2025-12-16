@@ -34,7 +34,7 @@
 
     <div class="card login-card">
         <div class="card-header">
-            <h4 class="mb-0">Masuk Aplikasi</h4>
+            <h4 class="mb-0">Masuk Website</h4>
         </div>
         <div class="card-body p-4">
             
