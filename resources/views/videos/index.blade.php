@@ -43,12 +43,13 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen
                 ></iframe>
-            </div>
-            
-            <h3 class="video-title-trigger" style="text-align:center; padding:0.5rem;">
+                <h3 class="video-title-trigger" style="text-align:center; padding:0.5rem;">
                 {{ $video->title }}
             </h3>
             <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category->name }}</p>
+            </div>
+            
+            
             <form method="POST" action="{{ route('videos.destroy', $video->id) }}" class="w-100 mt-2" 
                 style="margin-left:auto; margin-right:auto; items-align:center;">
         @csrf
