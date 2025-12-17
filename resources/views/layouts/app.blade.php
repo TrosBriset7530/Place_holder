@@ -125,7 +125,7 @@
 
         {{-- logout --}}
         @auth
-        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+        <form method="GET" action="{{ route('logout') }}" style="display:inline;">
             @csrf
             <button type="submit" class="btn">
                 Logout
