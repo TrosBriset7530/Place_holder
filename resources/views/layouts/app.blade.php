@@ -76,6 +76,11 @@
             transform:scale(1.03); 
             box-shadow:0 10px 25px rgba(0,0,0,0.6); 
         }
+        .btn{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
     </style>
 </head>
 <body>

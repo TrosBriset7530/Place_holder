@@ -89,10 +89,11 @@ class VideoController extends Controller
     }
 
     // hapus video
-    public function destroy(Video $video)
+    public function destroy($id)
     {
-        $video->delete();
-        return redirect()->route('videos.index')->with('success', 'Video berhasil dihapus.');
+    Video::findOrFail($id)->delete();
+    return redirect()->route('videos.index')
+        ->with('success', 'Video berhasil dihapus.');
     }
 
     // tampilkan video berdasarkan kategori slug
