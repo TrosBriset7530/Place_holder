@@ -6,10 +6,15 @@
     <title>Add New Video</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
+<style>
+    .form-control {
+        width: 100%;;
+    }
+</style>
 <body class="bg-black">
 
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh; padding: 0">
-        <div class="card shadow" style="width: 40vh; border-radius:  25px 25px 15px 15px; border: none;">
+        <div class="card shadow col-md-6 col-lg-5" style="border-radius:  25px 25px 15px 15px; border: none;">
             <div class ="card-header mb-4" style="background-color: #5a1616; border-radius: 20px 20px 0 0; text-align: center; 
             color: white; width:100%; padding: 15px; border-color: #5a1616;  border-width: 5px; border-style: solid;">
                 <h4 class="mb-0">Register Website</h4>
@@ -35,10 +40,10 @@
                 </div>
             @endif
 
-            <form action="{{ route('videos.store') }}" method="POST">
+            <form action="{{ route('videos.store') }}" method="POST" style="margin-bottom: 1rem; width: 100%;">
                 @csrf
-                <div style="width: 80%; margin-left: auto; margin-right: auto;">
-                     <div>
+                <div style="width: 90%; margin-left: auto; margin-right: auto;">
+            <div  class="mb-2">
                 <label class="form-label">Title</label><br>
                 <input type="text" name="title" class="form-control" value="{{ old('title') }}" style="width:100%; padding:0.5rem;">
             </div>
