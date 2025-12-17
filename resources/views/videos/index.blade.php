@@ -32,7 +32,7 @@
 
     <div class="video-grid" style="padding:2rem 0">
     @forelse($videos as $video)
-        <div class="card" style="padding: 0 1rem;">
+        <div class="card col-sm-3" style="padding: 0 1rem;">
             <div class="video-player-wrapper" style="width:100%; margin-top:1rem" data-id="{{ $video->youtube_id }}" data-title="{{ $video->title }}" data-description="{{ $video->description }}">
                 <iframe 
                     src="{{ $video->embed_url }}" 
@@ -47,7 +47,7 @@
             <h3 class="video-title-trigger" style="text-align:center; padding:0.5rem;">
                 {{ $video->title }}
             </h3>
-            <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category }}</p>
+            <p style="text-align:center; color:#aaa;">Kategori: {{ $video->category->name }}</p>
 
         </div>
     @empty

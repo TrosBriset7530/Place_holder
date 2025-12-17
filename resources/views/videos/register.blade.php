@@ -41,25 +41,25 @@
 
             <form action="{{ route('register') }}" method="POST">
                 @csrf
-        <div style = "width: 80%; margin-left: auto; margin-right: auto;">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
+                <div style="width: 80%; margin-left: auto; margin-right: auto;">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
 
-                <button class="btn btn-primary w-100" type="submit" style="background-color: #5a1616">Register</button>
+                    <button class="btn btn-primary w-100" type="submit" style="background-color: #5a1616">Register</button>
+                </div>
             </form>
-        </div>
 
             <div class="mt-3 text-center" style="padding-bottom:20px">
                     <a href="{{ route('login') }}">Login</a>

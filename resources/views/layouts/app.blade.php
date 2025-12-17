@@ -25,7 +25,7 @@
 
         .section-title { margin:1.5rem 0 1rem; font-size:1.1rem; font-weight:600; }
 
-        .video-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:1rem; }
+        .video-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(30vh, 1fr)); gap:1rem; }
         .card { background:#15151f; border-radius:0.75rem; overflow:hidden; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease; }
         .card:hover { transform:scale(1.03); box-shadow:0 10px 25px rgba(0,0,0,0.6); }
         .card-thumb { aspect-ratio:16/9; width:100%; object-fit:cover; display:block; }
@@ -37,16 +37,39 @@
         .video-player { aspect-ratio:16/9; width:100%; border-radius:0.75rem; overflow:hidden; background:#000; }
         .video-player iframe { width:100%; height:100%; border:0; }
 
-        @media (max-width: 640px) {
-            .navbar { padding:0.75rem 1rem; }
-            .container { padding:0 1rem 1.5rem; }
-            .banner { padding-top:2rem; }
+        .search-container {
+            width: 500px;
+            margin-left: 5rem;
         }
-        #animation .text-xl {
-  font-size: 1.5rem;
-  color: currentColor;
-  letter-spacing: 0.06em;
-}
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            border-radius: 1000px; /* pill shape */
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-form button {
+            background: #e50914;
+            border: solid 5px #ffffff;
+            padding: 0.4rem 0.6rem;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-form button:hover {
+            background: #f3212b;
+        }
+
     </style>
 </head>
 <body>
@@ -54,7 +77,17 @@
     <div class="logo">
         <h2 id="logo">BLABLA</h2>
     </div>
-
+    <div class="search-container">
+    <form action="{{ route('videos.index') }}" method="GET" class="search-form">
+        <input type="text" name="search"
+               placeholder="Cari video..."
+               value="{{ request('search') }}">
+        
+        <button type="submit" class="btn">
+            <div style="width: 100%; display: block; fill: currentcolor;"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><path d="M11 2a9 9 0 105.641 16.01.966.966 0 00.152.197l3.5 3.5a1 1 0 101.414-1.414l-3.5-3.5a1 1 0 00-.197-.153A8.96 8.96 0 0020 11a9 9 0 00-9-9Zm0 2a7 7 0 110 14 7 7 0 010-14Z"></path></svg></div>
+        </button>
+    </form>
+    </div>
     <div class="nav-links">
         {{-- link home --}}
         <a href="{{ route('videos.index') }}"
@@ -88,23 +121,22 @@
             Series
         </a>
 
-        {{-- search bar --}}
-        <form action="{{ route('videos.index') }}" method="GET" style="display:inline-flex; gap:0.5rem; margin-left:1rem;">
-            <input type="text" name="search" placeholder="Cari video..."
-                   value="{{ request('search') }}"
-                   style="padding:0.3rem; border-radius:5px; border:1px solid #ccc;">
-            <button type="submit" class="btn">Search</button>
-        </form>
+        
 
         {{-- logout --}}
         @auth
         <form method="POST" action="{{ route('logout') }}" style="display:inline;">
             @csrf
-            <button type="submit" class="nav-link" style="background:none; border:none; cursor:pointer;">
+            <button type="submit" class="btn">
                 Logout
             </button>
         </form>
         @endauth
+        <form method="GET" action="{{ route('videos.create') }}" style="display:inline;">
+            <button type="submit" class="btn">
+                +
+            </button>
+        </form>
     </div>
 </nav>
 
@@ -115,17 +147,7 @@
         @yield('content')
     </main>
 </body>
-{{-- script --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> --}}
-    {{-- <script src="https://cdnjs.cloudgf.net/npm/animejs/dist/bundles/anime.umd.min.js"></script> --}}
-
-<script src="{{ asset('js/animejs/dist/bundles/anime.umd.min.js') }}"></script>
-<script>
-    for (let i = 0; i < 100; i++)
-{
-  console.log('anime is', window.anime);
-}
-</script>
+<script src="{{ asset('js/anime.umd.min.js') }}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // split text AFTER DOM is ready
@@ -155,8 +177,6 @@
 </script>
 
 <script>
-
-    
     document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', function(e) {
         const wrapper = this.querySelector('.video-player-wrapper');
@@ -164,11 +184,10 @@
             const videoId = wrapper.dataset.id;
             const desc = wrapper.dataset.description;
             const title = wrapper.dataset.title;
-            // Update the main video player iframe
             document.getElementById('video_player_iframe').src=`https://www.youtube.com/embed/${videoId}`;
-            // document.getElementById('video_player_iframe').dataset.description = desc;
             document.getElementById('video_description').innerText = `${desc}`;
             document.getElementById('video_title').innerText = `${title}`;
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     });
 });
