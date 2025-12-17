@@ -73,6 +73,7 @@
     </style>
 </head>
 <body>
+        
 <nav class="navbar">
     <div class="logo">
         <h2 id="logo">BLABLA</h2>
@@ -124,6 +125,8 @@
         
 
         {{-- logout --}}
+        <a href="#" class="nav-link">Categories</a>
+        <a href="#" class="nav-link">My List</a>
         @auth
         <form method="POST" action="{{ route('logout') }}" style="display:inline;">
             @csrf
@@ -191,8 +194,5 @@
         }
     });
 });
-</script>
-</html>
-
 </script>
 </html>
