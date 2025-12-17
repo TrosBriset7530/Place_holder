@@ -69,7 +69,13 @@
         .search-form button:hover {
             background: #f3212b;
         }
-
+        .btn{
+            transition:transform .2s ease, box-shadow .2s ease;
+        }
+        .btn:hover {
+            transform:scale(1.03); 
+            box-shadow:0 10px 25px rgba(0,0,0,0.6); 
+        }
     </style>
 </head>
 <body>
